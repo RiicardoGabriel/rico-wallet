@@ -57,7 +57,7 @@ class Login extends React.Component {
           type="email"
           name="email"
           value={ email }
-          placeholder="Digite seu email"
+          placeholder="Email"
           onChange={ this.handleChange }
         />
         <input
@@ -65,7 +65,7 @@ class Login extends React.Component {
           type="password"
           name="password"
           value={ password }
-          placeholder="Digite sua senha"
+          placeholder="Senha"
           onChange={ this.handleChange }
         />
         <Link to="/carteira">
