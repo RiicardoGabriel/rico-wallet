@@ -32,6 +32,10 @@ export const receiveCoins = (coins) => ({
   type: 'RECEIVE_COINS',
   coins });
 
+export const deleteExpense = (expenseId) => ({
+  type: 'DELETE_EXPENSE',
+  expenseId });
+
 export const fetchCoins = () => async (dispatch) => {
   try {
     const currencies = await getCoins();
