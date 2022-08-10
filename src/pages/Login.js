@@ -43,7 +43,6 @@ class Login extends React.Component {
     if (this.verifyEmail() || this.verifyPassword()) {
       return true;
     }
-    return false;
   }
 
   render() {
@@ -51,7 +50,7 @@ class Login extends React.Component {
     const { email, password } = this.state;
     return (
       <>
-        <div>Login</div>
+        <h2>Login</h2>
         <input
           data-testid="email-input"
           type="email"
