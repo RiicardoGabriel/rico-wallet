@@ -1,0 +1,21 @@
+.login-contato {
+    align-items: center;
+    border-top: 2px solid rgb(49, 49, 48);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    padding-top: 25px;
+    flex-wrap: wrap;
+    margin-top: 8%;
+}
+
+.login-contato a {
+  color: rgb(27, 26, 26);
+  text-decoration: none;
+}
+
+.login-contato div {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}

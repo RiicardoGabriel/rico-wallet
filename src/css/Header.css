@@ -1,0 +1,17 @@
+.header-content {
+    background-color: rgb(39, 37, 37);
+    color: aliceblue;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  .title-wallet {
+    color: rgb(4, 88, 15);
+  }
+  
+  .title-rico {
+    color: rgb(236, 252, 230);
+  }

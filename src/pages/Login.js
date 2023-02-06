@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../css/Login.css';
 
 import { loginEmail } from '../redux/actions';
+import Contato from '../components/Contato';
 
 class Login extends React.Component {
   constructor() {
@@ -49,35 +51,47 @@ class Login extends React.Component {
     const { emailDisp } = this.props;
     const { email, password } = this.state;
     return (
-      <>
-        <h2>Login</h2>
-        <input
-          data-testid="email-input"
-          type="email"
-          name="email"
-          value={ email }
-          placeholder="Email"
-          onChange={ this.handleChange }
-        />
-        <input
-          data-testid="password-input"
-          type="password"
-          name="password"
-          value={ password }
-          placeholder="Senha"
-          onChange={ this.handleChange }
-        />
-        <Link to="/carteira">
-          <button
-            type="button"
-            disabled={ this.disabledBtn() }
-            label="Entrar"
-            onClick={ () => emailDisp(email) }
-          >
-            Entrar
-          </button>
-        </Link>
-      </>
+      <div className="page-login">
+        <div className="content-login">
+          <form className="login-form">
+            <h2>Login</h2>
+            <label htmlFor="email">
+              <input
+                className="email"
+                data-testid="email-input"
+                type="email"
+                name="email"
+                value={ email }
+                placeholder="Insira seu email"
+                onChange={ this.handleChange }
+              />
+            </label>
+            <label htmlFor="password">
+              <input
+                className="password"
+                data-testid="password-input"
+                type="password"
+                name="password"
+                value={ password }
+                placeholder="Senha"
+                onChange={ this.handleChange }
+              />
+            </label>
+            <Link to="/carteira">
+              <button
+                className="btn-login"
+                type="button"
+                disabled={ this.disabledBtn() }
+                label="Entrar"
+                onClick={ () => emailDisp(email) }
+              >
+                Entrar
+              </button>
+            </Link>
+            <Contato cssName="login-contato" />
+          </form>
+        </div>
+      </div>
     );
   }
 }

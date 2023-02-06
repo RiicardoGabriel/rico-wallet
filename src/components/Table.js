@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteExpense as deleteExpenseAction } from '../redux/actions';
+import '../css/Table.css';
 
 class Table extends Component {
   deletarExp = (id) => {
@@ -13,47 +14,55 @@ class Table extends Component {
   render() {
     const { expensesProp, deleteExpense } = this.props;
     return (
-      <table>
-        <th>Descrição</th>
-        <th>Tag</th>
-        <th>Método de pagamento</th>
-        <th>Valor</th>
-        <th>Moeda</th>
-        <th>Câmbio utilizado</th>
-        <th>Valor convertido</th>
-        <th>Moeda de conversão</th>
-        <th>Editar/Excluir</th>
-        <tbody>
-          { expensesProp.map(({ id, value, description,
-            tag, method, currency, exchangeRates }) => {
-            const { ask } = exchangeRates[currency];
-            const toFixedFunc = Number(ask).toFixed(2);
-            const cambio = Number(ask * value).toFixed(2);
+      <div className="table">
+        <table data-testid="table-wallet">
+          <thead className="header-table">
+            <tr>
+              <th>Descrição</th>
+              <th>Tag</th>
+              <th>Método de pagamento</th>
+              <th>Valor</th>
+              <th>Moeda</th>
+              <th>Câmbio utilizado</th>
+              <th>Valor convertido</th>
+              <th>Moeda de conversão</th>
+              <th>Excluir</th>
+            </tr>
+          </thead>
 
-            return (
-              <tr key={ id }>
-                <td>{ description }</td>
-                <td>{ tag }</td>
-                <td>{ method }</td>
-                <td>{Number(value).toFixed(2)}</td>
-                <td>{ exchangeRates[currency].name }</td>
-                <td>{ toFixedFunc }</td>
-                <td>{ cambio }</td>
-                <td>Real</td>
-                <td>
-                  <button
-                    data-testid="delete-btn"
-                    type="button"
-                    onClick={ () => deleteExpense(id) }
-                  >
-                    Apagar
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          <tbody>
+            { expensesProp.map(({ id, value, description,
+              tag, method, currency, exchangeRates }) => {
+              const { ask } = exchangeRates[currency];
+              const toFixedFunc = Number(ask).toFixed(2);
+              const cambio = Number(ask * value).toFixed(2);
+
+              return (
+                <tr key={ id }>
+                  <td data-testid="td-desc">{ description }</td>
+                  <td data-testid="td-tag">{ tag }</td>
+                  <td data-testid="td-method">{ method }</td>
+                  <td data-testid="td-value">{Number(value).toFixed(2)}</td>
+                  <td data-testid="td-name">{ exchangeRates[currency].name }</td>
+                  <td data-testid="td-cambio">{ toFixedFunc }</td>
+                  <td data-testid="td-conversão">{ cambio }</td>
+                  <td data-testid="td-real">Real</td>
+                  <td>
+                    <button
+                      className="delete-btn"
+                      data-testid="delete-btn"
+                      type="button"
+                      onClick={ () => deleteExpense(id) }
+                    >
+                      Apagar
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
